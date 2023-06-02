@@ -1,12 +1,15 @@
 .palyer{
+    border-radius: 50%;
     width: 100px;
     height: 100px;
     background-image: url("images/ufo.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
+    position: absolute;
+    cursor: none;
 }
+
 .body{
     overflow-x: hidden;
     overflow-y: hidden;
@@ -27,3 +30,11 @@
     background-color: orange;
     position: absolute;
 }
+
+#game{
+    width: 1500px;
+    height: 900px;
+    margin-left: 200px;
+    margin-top: 20px;
+    background-color: blue;
+ }
