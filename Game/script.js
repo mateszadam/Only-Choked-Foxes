@@ -5,12 +5,10 @@ var gameWidth = game.clientWidth
 
 document.onmousemove = function(event) {
     if(event.clientX-playerRadius-10 < 200){
-        event.clientX = 255
-        console.log("hello")
+        event.clientX = 255    
       }
     else if(event.clientX+playerRadius > 1700+10){
         event.clientX = 1700-playerRadius
-        console.log("bello")
     }
     else if(event.clientY-playerRadius < 20){
         event.clientY = 70
