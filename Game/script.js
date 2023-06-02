@@ -1,21 +1,34 @@
 var player = document.querySelector(".palyer")
 var game = document.querySelector("#game")
+var playerRadius = 50
+var gameWidth = game.clientWidth
 
-
-document.onmousemove = function(event) {myFunction(event)};
+document.onmousemove = function(event) {
+    if(event.clientX-playerRadius-10 < 200){
+        event.clientX = 255    
+      }
+    else if(event.clientX+playerRadius > 1700+10){
+        event.clientX = 1700-playerRadius
+    }
+    else if(event.clientY-playerRadius < 20){
+        event.clientY = 70
+    }
+    else if(event.clientY + playerRadius > 920){
+        event.clientY = 920-playerRadius
+    }
+    else{
+        myFunction(event)
+    }
+};
 
 function enemies() {
-    let pos1 = Math.floor(Math.random() * screen.width - 100);
+    let pos1 = Math.floor(Math.random() * (gameWidth-80) + 210);
     console.log(pos1);
     let div = document.createElement("div")
     div.style.left = pos1 + "px"
     div.className = "enemy"
     game.prepend(div)
 }
-
-
-
-
 
 function shoot() {
     div = document.createElement("div")
@@ -71,8 +84,8 @@ function isCollide(a, b) {
 function myFunction(e) {
   let x = e.clientX;
   let y = e.clientY;
-  player.style.top = y - 50+ "px"
-  player.style.left = x- 50 + "px"
+  player.style.top = y - playerRadius+ "px"
+  player.style.left = x- playerRadius + "px"
 }
 
 setInterval(enemies, 500)
