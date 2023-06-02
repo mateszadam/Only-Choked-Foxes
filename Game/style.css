@@ -1,10 +1,11 @@
 .palyer{
-    border-radius: 50%;
     width: 100px;
     height: 100px;
-    background-color: rebeccapurple;
-    position: absolute;
-    cursor: none;
+    background-image: url("images/ufo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 .body{
     overflow-x: hidden;
