@@ -2,6 +2,9 @@ var player = document.querySelector(".palyer")
 var game = document.querySelector("#game")
 var playerRadius = 50
 var gameWidth = game.clientWidth
+var death = 0
+const overlay = document.querySelector('.overlay')
+const restart = document.querySelector('.overlay .r')
 
 document.onmousemove = function(event) {
     if(event.clientX-playerRadius-10 < 200){
@@ -23,7 +26,6 @@ document.onmousemove = function(event) {
 
 function enemies() {
     let pos1 = Math.floor(Math.random() * (gameWidth-80) + 210);
-    console.log(pos1);
     let div = document.createElement("div")
     div.style.left = pos1 + "px"
     div.className = "enemy"
@@ -54,6 +56,10 @@ function move() {
         element.style.top = element.offsetTop + 2 + "px"
         if (element.offsetTop > 800) {
             element.remove()
+            death++
+            if(death == 1){
+                GameOver()
+            }
         }
     });
     ammos.forEach(element => {
@@ -88,7 +94,28 @@ function myFunction(e) {
   player.style.left = x- playerRadius + "px"
 }
 
-setInterval(enemies, 500)
-setInterval(move, 5)
-setInterval(shoot, 200)
+function AddCity(){
+    let image = document.createElement('img')
+    image.src = "./images/city2.png"
+    image.width = gameWidth
+    image.style.height = 200 + "px"
+    image.style.marginTop = 700 + 'px'
+    game.append(image)
+}
+
+function GameOver(){
+    overlay.classList.remove("hidden")
+}
+
+restart.addEventListener("click", ()=>{
+    location.reload()
+})
+
+if(death == 0){
+    setInterval(enemies, 500)
+    setInterval(move, 5)
+    setInterval(shoot, 200)
+    AddCity()
+}
+
 

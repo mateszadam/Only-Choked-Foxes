@@ -17,9 +17,12 @@
 }
 .enemy{
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: red;
+    width: 90px;
+    height: 75px;
+    background-image: url(./images/asteorid.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: absolute;
     animation: all 0.11s;
 }
@@ -27,7 +30,7 @@
 .ammo{
     width: 10px;
     height: 30px;
-    background-color: orange;
+    background-color: greenyellow;
     position: absolute;
 }
 
@@ -36,5 +39,43 @@
     height: 900px;
     margin-left: 200px;
     margin-top: 20px;
-    background-color: blue;
- }
+    background-image: url(./images/space.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+body{
+    background-color: black;
+    margin: 0;
+}
+
+.hidden { display: none; }
+
+.overlay {
+  position: fixed;
+  z-index: 100;
+  padding: 20px;
+  background: red;
+  border: solid 1px #ccc;
+  width: 1500px;
+  height: 880px;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.overlay h1{
+    text-align: center;
+    margin-top: 300px;
+    color: white;
+    font-size: 50px;
+}
+
+button{
+    width: 100px;
+    height: 30px;
+    margin-left: 48%;
+}
