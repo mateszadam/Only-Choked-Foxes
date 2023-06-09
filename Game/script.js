@@ -3,20 +3,22 @@ var game = document.querySelector("#game")
 var playerRadius = 50
 var gameWidth = game.clientWidth
 var death = 0
+var pontszam = 0
 const overlay = document.querySelector('.overlay')
 const restart = document.querySelector('.overlay .r')
+const score = document.querySelector("#score")
 
 document.onmousemove = function(event) {
-    if(event.clientX-playerRadius-10 < 200){
+    if(event.clientX-playerRadius-10 < 100){
         event.clientX = 255    
       }
-    else if(event.clientX+playerRadius > 1700+10){
+    else if(event.clientX+playerRadius > 1600+10){
         event.clientX = 1700-playerRadius
     }
     else if(event.clientY-playerRadius < 20){
         event.clientY = 70
     }
-    else if(event.clientY + playerRadius > 920){
+    else if(event.clientY + playerRadius > 820){
         event.clientY = 920-playerRadius
     }
     else{
@@ -25,7 +27,7 @@ document.onmousemove = function(event) {
 };
 
 function enemies() {
-    let pos1 = Math.floor(Math.random() * (gameWidth-80) + 210);
+    let pos1 = Math.floor(Math.random() * (gameWidth-80) + 110);
     let div = document.createElement("div")
     div.style.left = pos1 + "px"
     div.className = "enemy"
@@ -45,16 +47,23 @@ function shoot() {
 function move() {
     let ammos = document.querySelectorAll(".ammo")
     ammos.forEach(element => {
-        
         element.style.top = element.offsetTop - 10 + "px"
-        if (element.offsetTop < 0) {
+        if (element.offsetTop < 20) {
             element.remove()
         }
     });
     let enemies = document.querySelectorAll(".enemy")
     enemies.forEach(element => {
-        element.style.top = element.offsetTop + 2 + "px"
-        if (element.offsetTop > 800) {
+        if(pontszam < 10){
+            element.style.top = element.offsetTop + 2 + "px"
+        }
+        if(pontszam >= 10 && pontszam < 20){
+            element.style.top = element.offsetTop + 3 + "px"
+        }
+        if(pontszam >= 20){
+            element.style.top = element.offsetTop + 4 + "px"
+        }
+        if (element.offsetTop > 700) {
             element.remove()
             death++
             if(death == 1){
@@ -62,13 +71,16 @@ function move() {
             }
         }
     });
+    score.innerText = `${pontszam}`
     ammos.forEach(element => {
         enemies.forEach(element2 => {
             if(isCollide(element,element2)){
                 element.remove();
                 element2.remove()
+                if(death < 1){
+                    pontszam++
+                }
             }
-
         });
     });
 
@@ -99,7 +111,7 @@ function AddCity(){
     image.src = "./images/city2.png"
     image.width = gameWidth
     image.style.height = 200 + "px"
-    image.style.marginTop = 700 + 'px'
+    image.style.marginTop = 600 + 'px'
     game.append(image)
 }
 

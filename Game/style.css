@@ -36,8 +36,8 @@
 
 #game{
     width: 1500px;
-    height: 900px;
-    margin-left: 200px;
+    height: 800px;
+    margin-left: 100px;
     margin-top: 20px;
     background-image: url(./images/space.jpg);
     background-position: center;
@@ -60,8 +60,9 @@ body{
   background: red;
   border: solid 1px #ccc;
   width: 1500px;
-  height: 880px;
+  height: 780px;
   top: 20px;
+  margin-left: 200px;
   left: 0;
   right: 0;
   margin: auto;
@@ -78,4 +79,11 @@ button{
     width: 100px;
     height: 30px;
     margin-left: 48%;
+}
+
+.score{
+    color: greenyellow;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 20px;
 }
